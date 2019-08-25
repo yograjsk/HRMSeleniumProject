@@ -3,11 +3,16 @@ package utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import java.util.concurrent.TimeUnit;
 
 public class Utils extends setupWebDriver{
+    public static void launchApplication(){
+        driver.get(Constants.APPLICATION_URL);
+    }
+
     public static void setValues(By by, String value){
         driver.findElement(by).sendKeys(value);
     }
@@ -56,6 +61,24 @@ public class Utils extends setupWebDriver{
 
         }
         return present;
+    }
+
+    public boolean operateMenus(By... menuItems){
+        boolean flag = false;
+        Actions action = new Actions(driver);
+        int totalMenuItems = menuItems.length;
+        int counter = 1;
+
+        for(By by:menuItems){
+            counter++;
+            action.moveToElement(driver.findElement(by)).build().perform();
+            if(counter==totalMenuItems){
+                click(by);
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
 

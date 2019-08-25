@@ -3,6 +3,7 @@ package utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class setupWebDriver {
+public class setupWebDriver extends Constants{
 
     static WebDriver driver;
 
@@ -23,7 +24,8 @@ public class setupWebDriver {
 
         if(browserName.equalsIgnoreCase("chrome")){
             driver = getChromeDriver();
-        }
+        }else if(browserName.equalsIgnoreCase("firefox") || browserName.equalsIgnoreCase("ff"))
+            driver = getFirefoxDriver();
 
         return driver;
     }
@@ -33,10 +35,16 @@ public class setupWebDriver {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/resources/drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
-
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         return driver;
     }
 
+    public WebDriver getFirefoxDriver(){
+
+        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/drivers/geckodriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        driver = new FirefoxDriver();
+        return driver;
+    }
 
 }

@@ -1,5 +1,6 @@
 package samplePackage;
 
+import hrm.or.ObjectRepo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -15,20 +16,17 @@ import java.util.concurrent.TimeUnit;
 
 public class Sample extends Utils{
 
-//        static Utils utils = new Utils();
-        static WebDriver driver;
-
+//        static WebDriver driver;
+    public static ObjectRepo or = new ObjectRepo();
 
     public static void main(String[] args) {
 
-        String url = "http://127.0.0.1/orangehrm/symfony/web/index.php/auth/login";
-
-        driver.get(url);
-        setValues(By.id("txtUsername"), "admin");
-        setValues(By.id("txtPassword"), "admin123");
-        click(By.id("btnLogin"));
-        waitUntilElementPresent(By.id("welcome"), 10);
-        checkElementPresent(By.id("welcome"));
+        launchApplication();
+        setValues(or.username, "admin");
+        setValues(or.password, "admin123");
+        click(or.btnLogin);
+        waitUntilElementPresent(or.lblWelcome, 10);
+        checkElementPresent(or.lblWelcome);
 
     }
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Solution16 {
 
     static boolean isAnagram(String a, String b) {
-        if(a.length()>50 || b.length()>50 || a.length()<1 || b.length()<1 || a.length() != a.length()){
+        if(a.length()>50 || b.length()>50 || a.length()<1 || b.length()<1 || a.length() != b.length()){
             return false;
         }
         String[] arraya = a.trim().toLowerCase().split("");

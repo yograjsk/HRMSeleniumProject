@@ -6,9 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class Utils extends setupWebDriver{
+    static WebDriver driver = setupWebDriver.driver;
+
+    public Utils() throws IOException {
+    }
+
+//        static WebDriver driver = setupWebDriver.get;
     public static void launchApplication(){
         driver.get(Constants.APPLICATION_URL);
     }
@@ -63,7 +70,7 @@ public class Utils extends setupWebDriver{
         return present;
     }
 
-    public boolean operateMenus(By... menuItems){
+    public static boolean menuNavigation(By... menuItems){
         boolean flag = false;
         Actions action = new Actions(driver);
         int totalMenuItems = menuItems.length;

@@ -6,6 +6,9 @@ import java.util.Collections;
 
 public class Solution10 {
 
+    class Student{
+
+    }
     public static void main(String[] args){
         Class student = Student.class;
         Method[] methods = student.getDeclaredMethods();

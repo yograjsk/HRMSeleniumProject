@@ -16,8 +16,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Sample extends Utils{
 
-//        static WebDriver driver;
+        static WebDriver driver;
     public static ObjectRepo or = new ObjectRepo();
+
+    public Sample() throws IOException {
+    }
 
     public static void main(String[] args) {
 
@@ -27,6 +30,9 @@ public class Sample extends Utils{
         click(or.btnLogin);
         waitUntilElementPresent(or.lblWelcome, 10);
         checkElementPresent(or.lblWelcome);
+
+        menuNavigation(By.id("menu_pim_viewPimModule"),By.id("menu_pim_Configuration"),By.id("menu_pim_configurePim"));
+
 
     }
 

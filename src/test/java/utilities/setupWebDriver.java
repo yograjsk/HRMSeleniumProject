@@ -13,6 +13,9 @@ import java.util.Properties;
 
 public class setupWebDriver extends Constants{
 
+    public setupWebDriver() throws IOException {
+        WebDriver driver = getDriver();
+    }
     static WebDriver driver;
 
     public WebDriver getDriver() throws IOException {
@@ -30,7 +33,7 @@ public class setupWebDriver extends Constants{
         return driver;
     }
 
-    public WebDriver getChromeDriver(){
+    private WebDriver getChromeDriver(){
 
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/resources/drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -39,7 +42,7 @@ public class setupWebDriver extends Constants{
         return driver;
     }
 
-    public WebDriver getFirefoxDriver(){
+    private WebDriver getFirefoxDriver(){
 
         System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/drivers/geckodriver.exe");
         ChromeOptions options = new ChromeOptions();

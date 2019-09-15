@@ -3,10 +3,12 @@ package utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Utils extends setupWebDriver{
@@ -18,6 +20,7 @@ public class Utils extends setupWebDriver{
 //        static WebDriver driver = setupWebDriver.get;
     public static void launchApplication(){
         driver.get(Constants.APPLICATION_URL);
+//        assertTrue
     }
 
     public static void setValues(By by, String value){
@@ -26,6 +29,12 @@ public class Utils extends setupWebDriver{
 
     public static void click(By by){
         driver.findElement(by).click();
+        driver.findElement(By.id("test")).isDisplayed();
+        driver.findElement(By.id("test")).getAttribute("id");
+        List<WebElement> abc = driver.findElements(By.id("fda"));
+        abc.size();
+
+
     }
 
     public static boolean selectFromDropdown(By by, String value){

@@ -7,9 +7,9 @@ public class FrogJmp {
     }
 
     public static int solution(int X, int Y, int D) {
-        if(X<1 || X>1000000000 || Y<1 || Y>1000000000 || D<1 || D>1000000000){
+        if(X>Y){
             return 0;
-        }else if(X>Y){
+        }else if(X<1 || X>1000000000 || Y<1 || Y>1000000000 || D<1 || D>1000000000){
             return 0;
         }
         int jmpCounter=0;
